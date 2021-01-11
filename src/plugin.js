@@ -26,13 +26,10 @@ class ColourPlugin {
 
   async convert(colourName) {
     const hex = toHex(colourName)
-    const rgb = this.convertToRgb(hex)
+    const rgb = await this.convertToRgb(hex)
+    const int = await this.rgbPoint(rgb[0], rgb[1], rgb[2])
 
-    this.evntBus?.newEvent('colour-colour-convert', {
-      data: {
-        rbg: rgb
-      }
-    })
+    return int
   }
 
   async convertToRgb(hex) {
@@ -53,6 +50,14 @@ class ColourPlugin {
         throw new Error("'" + hexa + "' is not a valid hex format");
       }
       return chunks;
+    }
+
+    async rgbPoint(red, green, blue) {
+      let r = red & 0xFF;
+      let g = green & 0xFF;
+      let b = blue & 0xFF;
+      const rgb = (red) + (green << 8) + (blue << 16);
+      return rgb
     }
 }
 
