@@ -1,0 +1,22 @@
+{
+  "name": "evntboard-module-trello",
+  "version": "1.0.0",
+  "description": "",
+  "main": "./src/index.js",
+  "scripts": {
+    "test": "echo \"Error: no test specified\" && exit 1"
+  },
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/Sabuto/plugin-colour-to-hex.git"
+  },
+  "author": "",
+  "license": "ISC",
+  "bugs": {
+    "url": "https://github.com/Sabuto/plugin-colour-to-hex/issues"
+  },
+  "homepage": "hhttps://github.com/Sabuto/plugin-colour-to-hex#readme",
+  "dependencies": {
+    "colornames": "^1.1.1"
+  }
+}
