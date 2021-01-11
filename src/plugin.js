@@ -54,7 +54,6 @@ class ColourPlugin {
       }
       return chunks;
     }
-  }
 }
 
 module.exports = ColourPlugin
