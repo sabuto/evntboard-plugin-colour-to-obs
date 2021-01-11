@@ -25,11 +25,35 @@ class TrelloPlugin {
   }
 
   async convert(colourName) {
-    this.evntBus?.newEvent('colour-convert', {
+    const hex = toHex(colourName)
+    const rgb = this.convertToRgb(hex)
+
+    this.evntBus?.newEvent('colour-colour-convert', {
       data: {
-        colour: toHex(colourName)
+        rbg: rgb
       }
     })
+  }
+
+  async convertToRgb(hex) {
+    let chunks = [];
+      let tmp, i;
+      hex = hex.substr(1); // remove the pound 
+      if (hex.length === 3) {
+        tmp = hex.split("");
+        for (i = 0; i < 3; i++) {
+          chunks.push(parseInt(tmp[i] + "" + tmp[i], 16));
+        }
+      } else if (hex.length === 6) {
+        tmp = hex.match(/.{2}/g);
+        for (i = 0; i < 3; i++) {
+          chunks.push(parseInt(tmp[i], 16));
+        }
+      } else {
+        throw new Error("'" + hexa + "' is not a valid hex format");
+      }
+      return chunks;
+    }
   }
 }
 
