@@ -1,6 +1,6 @@
 const toHex = require('colornames')
 
-class TrelloPlugin {
+class ColourPlugin {
 
   constructor(options, { evntBus, logger }) {
     // plugin options
@@ -57,4 +57,4 @@ class TrelloPlugin {
   }
 }
 
-module.exports = TrelloPlugin
+module.exports = ColourPlugin
