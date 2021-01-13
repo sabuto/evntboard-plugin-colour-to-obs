@@ -12,7 +12,7 @@ class ColourPlugin {
 
   async load() {
     // Just Load the plugin
-    this.evntBus?.newEvent('colour-plugin-load')
+    this.evntBus?.newEvent('git')
   }
 
   async unload() {
@@ -24,15 +24,24 @@ class ColourPlugin {
     await this.load();
   }
 
-  async convert(colourName) {
+  async convertToRgb(colourName) {
     const hex = toHex(colourName)
-    const rgb = await this.convertToRgb(hex)
+    return await this.toRgb(hex)
+  }
+
+   async convertToHex(colourName) {
+    return toHex(colourName)
+  }
+
+  async convertToObs(colourName) {
+    const hex = toHex(colourName)
+    const rgb = await this.toRgb(hex)
     const int = await this.rgbPoint(rgb[0], rgb[1], rgb[2])
 
     return int
   }
 
-  async convertToRgb(hex) {
+  async toRgb(hex) {
     let chunks = [];
       let tmp, i;
       hex = hex.substr(1); // remove the pound 
